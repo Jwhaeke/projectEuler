@@ -10,63 +10,36 @@ find the sum of the even-valued terms. -->
 
 #abandoned this approach - trying new angle I found.
 
-// $num1 = 1;
-// $num1Temp = 0;
-// $num2 = 1;
-// $num2Temp = 0;
-// $add = 0;
-// $sum = 0;
+$num1 = 1;
+$num1Temp = 0;
+$num2 = 1;
+$num2Temp = 0;
+$add = 0;
+$sum = 0;
 
-// do {
-//     echo "num1: ".$num1."<br>";
-//     echo "num2: ".$num2."<br>";
-//     if (($num1 + $num2) % 2 == 0) { 
-//         $sum += $num1 + $num2;
-//         $num1Temp = $num1;
-//         $num2Temp = $num2;
-//         $num1 = $num2Temp;
-//         $num2 = $num1Temp + $num2Temp;
-//         $add += $num1 + $num2;
+do {
+    echo "num1: ".$num1."<br>";
+    echo "num2: ".$num2."<br>";
+    if (($num1 + $num2) % 2 == 0) { 
+        $sum += $num1 + $num2;
+        $num1Temp = $num1;
+        $num2Temp = $num2;
+        $num1 = $num2Temp;
+        $num2 = $num1Temp + $num2Temp;
+        $add += $num1 + $num2;
 
-//         echo $sum."<br>";
-//     }
+        echo $sum."<br>";
+    }
 
-//     $add += $num1 + $num2;
-//     $num1Temp = $num1;
-//     $num2Temp = $num2;
-//     $num1 = $num2Temp;
-//     $num2 = $num1Temp + $num2Temp;
+    $add += $num1 + $num2;
+    $num1Temp = $num1;
+    $num2Temp = $num2;
+    $num1 = $num2Temp;
+    $num2 = $num1Temp + $num2Temp;
 
-// } while ($sum <= 4000000);
+} while ($sum <= 4000000);
 
 # A number is Fibonacci if and only if one or both of (5*n2 + 4) or (5*n2 – 4) is a perfect square 
 
-$sum = 0;
 
-function isPerfectSquare($x) 
-{ 
-    $s = (int)(sqrt($x)); 
-    return ($s * $s == $x); 
-} 
-  
-// Returns true if n is a 
-// Fibinacci Number, else false 
-function isFibonacci($n) 
-{ 
-    // n is Fibinacci if one of  
-    // 5*n*n + 4 or 5*n*n - 4 or  
-    // both is a perferct square 
-    return isPerfectSquare(5 * $n * $n + 4) ||  
-           isPerfectSquare(5 * $n * $n - 4); 
-} 
 
-function isEven($e) {
-    return (($e % 2) == 0);
-}
-  
-for ($i = 0; $i <= 4000000; $i++) {
-    if(isFibonacci($i) && isEven($i)) {
-    $sum += $i;
-    echo $sum."<br>";
-    } 
-}
